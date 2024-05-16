@@ -12,7 +12,6 @@ app.use(bodyParser.json());
 // Nodemailer transporter setup
 const transporter = nodemailer.createTransport({
   host: 'smtp-mail.outlook.com',
-  secureConnection: false, // Use STARTTLS
   port: 587, // Outlook SMTP port (587 for TLS)
   tls: {
       ciphers: 'SSLv3',
