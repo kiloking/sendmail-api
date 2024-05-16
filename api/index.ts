@@ -15,7 +15,8 @@ const transporter = nodemailer.createTransport({
   secureConnection: false, // Use STARTTLS
   port: 587, // Outlook SMTP port (587 for TLS)
   tls: {
-      ciphers: 'SSLv3'
+      ciphers: 'SSLv3',
+      rejectUnauthorized: false,
   },
   auth: {
     user: process.env.NEXT_PUBLIC_EMAIL_USER, // 你的Outlook邮件地址
