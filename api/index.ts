@@ -11,11 +11,10 @@ app.use(bodyParser.json());
 
 // Nodemailer transporter setup
 const transporter = nodemailer.createTransport({
-  host: 'smtp-mail.outlook.com',
+  host: 'smtp.mailersend.net',
   port: 587, // Outlook SMTP port (587 for TLS)
   tls: {
       ciphers: 'SSLv3',
-      rejectUnauthorized: false,
   },
   auth: {
     user: process.env.NEXT_PUBLIC_EMAIL_USER, // 你的Outlook邮件地址
