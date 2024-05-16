@@ -15,8 +15,8 @@ const transporter = nodemailer.createTransport({
   port: 587, // Outlook SMTP port (587 for TLS)
   secure: false, // Use STARTTLS
   auth: {
-      user: process.env.EMAIL_USER, // 你的Outlook邮件地址
-      pass: process.env.EMAIL_PASS // 你的邮件密码
+      user: process.env.NEXT_PUBLIC_EMAIL_USER, // 你的Outlook邮件地址
+      pass: process.env.NEXT_PUBLIC_EMAIL_PASS // 你的邮件密码
   },
   tls: {
       ciphers: 'SSLv3'
@@ -38,7 +38,7 @@ app.post('/send-email', (req, res) => {
     }
 
     const mailOptions = {
-        from: process.env.EMAIL_USER, // 发送邮件地址
+        from: process.env.NEXT_PUBLIC_EMAIL_USER, // 发送邮件地址
         to: to, // 收件人地址，单一邮件地址
         subject: subject, // 邮件主题
         text: `顧客姓名: ${customerName}\n聯絡電話: ${phoneNumber}\n居住縣市: ${city}\n居住地區: ${district}\n電子信箱: ${email}` // 邮件内容
