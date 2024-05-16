@@ -31,7 +31,7 @@ app.get('/test', (req, res) => {
 // 发送邮件的 API 端点
 app.post('/send-email', (req, res) => {
     const { to, subject, customerName, phoneNumber, city, district, email } = req.body;
-
+    console.log('USER',process.env.NEXT_PUBLIC_EMAIL_USER)
     // 检查 'to' 字段是否存在并且是字符串
     if (!to || typeof to !== 'string') {
         return res.status(400).send({ message: 'Invalid "to" field. It should be a string.' });
