@@ -17,8 +17,8 @@ const transporter = nodemailer.createTransport({
       ciphers: 'SSLv3',
   },
   auth: {
-    user: process.env.NEXT_PUBLIC_EMAIL_USER, // 你的Outlook邮件地址
-    pass: process.env.NEXT_PUBLIC_EMAIL_PASS // 你的邮件密码
+    user: process.env.NEXT_PUBLIC_EMAIL_USER, 
+    pass: process.env.NEXT_PUBLIC_EMAIL_PASS 
 },
 });
 app.get("/", (req, res) => res.send("Express on Vercel"));
