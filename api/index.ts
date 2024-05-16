@@ -12,15 +12,15 @@ app.use(bodyParser.json());
 // Nodemailer transporter setup
 const transporter = nodemailer.createTransport({
   host: 'smtp-mail.outlook.com',
+  secureConnection: false, // Use STARTTLS
   port: 587, // Outlook SMTP port (587 for TLS)
-  secure: false, // Use STARTTLS
-  auth: {
-      user: process.env.NEXT_PUBLIC_EMAIL_USER, // 你的Outlook邮件地址
-      pass: process.env.NEXT_PUBLIC_EMAIL_PASS // 你的邮件密码
-  },
   tls: {
       ciphers: 'SSLv3'
-  }
+  },
+  auth: {
+    user: process.env.NEXT_PUBLIC_EMAIL_USER, // 你的Outlook邮件地址
+    pass: process.env.NEXT_PUBLIC_EMAIL_PASS // 你的邮件密码
+},
 });
 app.get("/", (req, res) => res.send("Express on Vercel"));
 // 测试 API 的 GET 端点
