@@ -22,10 +22,10 @@ const transporter = nodemailer.createTransport({
       ciphers: 'SSLv3'
   }
 });
-app.get("/", (req, res) => res.send("Express on Vercel",process.env.NEXT_PUBLIC_EMAIL_USER));
+app.get("/", (req, res) => res.send("Express on Vercel"));
 // 测试 API 的 GET 端点
 app.get('/test', (req, res) => {
-    res.status(200).send({ message: 'API is working' });
+    res.status(200).send({ message: 'API is working at:'+process.env.NEXT_PUBLIC_EMAIL_USER });
 });
 
 // 发送邮件的 API 端点
