@@ -29,7 +29,7 @@ app.get('/test', (req, res) => {
 
 // 发送邮件的 API 端点
 app.post('/send-email', (req, res) => {
-    const { to, subject, customerName, phoneNumber, city, district, email } = req.body;
+    const { to, subject, text } = req.body;
     // 检查 'to' 字段是否存在并且是字符串
     if (!to || typeof to !== 'string') {
         return res.status(400).send({ message: 'Invalid "to" field. It should be a string.' });
@@ -39,7 +39,7 @@ app.post('/send-email', (req, res) => {
         from: process.env.NEXT_PUBLIC_EMAIL_USER, // 发送邮件地址
         to: to, // 收件人地址，单一邮件地址
         subject: subject, // 邮件主题
-        text: `顧客姓名: ${customerName}\n聯絡電話: ${phoneNumber}\n居住縣市: ${city}\n居住地區: ${district}\n電子信箱: ${email}` // 邮件内容
+        text: text // 邮件内容
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
