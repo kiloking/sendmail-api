@@ -34,7 +34,7 @@ app.post('/send-email', (req, res) => {
     if (!to || typeof to !== 'string') {
         return res.status(400).send({ message: 'Invalid "to" field. It should be a string.' });
     }
-    const toArray = to.split(',').map(email => ({ email: email.trim() }));
+    const toArray = to.split(',').map(email => email.trim());
     console.log('Converted "to" field:', toArray); //
 
     const mailOptions = {
