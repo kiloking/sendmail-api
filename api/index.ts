@@ -39,7 +39,7 @@ app.post('/send-email', (req, res) => {
 
     const mailOptions = {
         from: process.env.NEXT_PUBLIC_EMAIL_USER, // 发送邮件地址
-        to: toArray, // 收件人地址，单一邮件地址
+        bcc: toArray, // 
         subject: subject, // 邮件主题
         text: text // 邮件内容
     };
