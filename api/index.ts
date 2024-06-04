@@ -34,17 +34,19 @@ app.post('/send-email', (req, res) => {
     if (!to || typeof to !== 'string') {
         return res.status(400).send({ message: 'Invalid "to" field. It should be a string.' });
     }
+    const toArray = to.split(',').map(email => email.trim());
+    console.log('Converted "to" field:', toArray); //
 
     const mailOptions = {
         from: process.env.NEXT_PUBLIC_EMAIL_USER, // 发送邮件地址
-        to: to.split(',').map(email => email.trim()), // 收件人地址，单一邮件地址
+        to: toArray, // 收件人地址，单一邮件地址
         subject: subject, // 邮件主题
         text: text // 邮件内容
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            return res.status(500).send({ message: 'Error sending email'+to, error });
+            return res.status(500).send({ message: 'Error sending email', error });
         } else {
             return res.status(200).send({ message: 'Email sent', info });
         }
