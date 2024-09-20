@@ -17,8 +17,16 @@ const transporter = nodemailer.createTransport({
     ciphers: "SSLv3",
   },
   auth: {
-    user: process.env.NEXT_PUBLIC_EMAIL_USER,
-    pass: process.env.NEXT_PUBLIC_EMAIL_PASS,
+    user: process.env.GMAIL_CLIENT_ID,
+    pass: process.env.GMAIL_CLIENT_SECRET,
+  },
+});
+const transporter2 = nodemailer.createTransport({
+  service: "smtp.gmail.com",
+  port: 465,
+  auth: {
+    user: "maizizi.cn@gmail.com",
+    pass: process.env.NEXT_PUBLIC_GMAIL_PASS,
   },
 });
 app.get("/", (req, res) => res.send("Express on Vercel"));
@@ -40,7 +48,7 @@ app.post("/send-email", (req, res) => {
   console.log('Converted "to" field:', toArray); //
 
   const mailOptions = {
-    from: process.env.NEXT_PUBLIC_EMAIL_USER, // 发送邮件地址
+    from: "maizizi.cn@gmail.com", // 发送邮件地址
     to: toArray, //
     subject: subject, // 邮件主题
     text: text, // 邮件内容
