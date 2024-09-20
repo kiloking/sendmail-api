@@ -54,7 +54,7 @@ app.post("/send-email", (req, res) => {
     text: text, // 邮件内容
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
+  transporter2.sendMail(mailOptions, (error, info) => {
     if (error) {
       return res.status(500).send({ message: "Error sending email", error });
     } else {
