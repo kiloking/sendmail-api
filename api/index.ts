@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 // Nodemailer transporter setup
 const transporter = nodemailer.createTransport({
   host: "smtp.elasticemail.com",
-  port: 587, // Outlook SMTP port (587 for TLS)
+  port: 2525, // Outlook SMTP port (587 for TLS)
   tls: {
     ciphers: "SSLv3",
   },
