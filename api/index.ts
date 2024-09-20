@@ -25,7 +25,7 @@ const transporter2 = nodemailer.createTransport({
   service: "smtp.gmail.com",
   port: 465,
   auth: {
-    user: "maizizi.cn@gmail.com",
+    user: process.env.NEXT_PUBLIC_GMAIL_USER,
     pass: process.env.NEXT_PUBLIC_GMAIL_PASS,
   },
 });
@@ -48,7 +48,7 @@ app.post("/send-email", (req, res) => {
   console.log('Converted "to" field:', toArray); //
 
   const mailOptions = {
-    from: "maizizi.cn@gmail.com", // 发送邮件地址
+    from: process.env.NEXT_PUBLIC_GMAIL_USER, // 发送邮件地址
     to: toArray, //
     subject: subject, // 邮件主题
     text: text, // 邮件内容
