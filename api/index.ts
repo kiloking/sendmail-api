@@ -11,14 +11,14 @@ app.use(bodyParser.json());
 
 // Nodemailer transporter setup
 const transporter = nodemailer.createTransport({
-  host: "smtp.elasticemail.com",
-  port: 2525, // Outlook SMTP port (587 for TLS)
+  host: "smtp.mailersend.net",
+  port: 587, // Outlook SMTP port (587 for TLS)
   tls: {
     ciphers: "SSLv3",
   },
   auth: {
-    user: "support@wuwood.com",
-    pass: "F602A51F55A03CB6B79F1DF79C7B7B7400E7",
+    user: process.env.NEXT_PUBLIC_EMAIL_USER,
+    pass: process.env.NEXT_PUBLIC_EMAIL_PASS,
   },
 });
 app.get("/", (req, res) => res.send("Express on Vercel"));
