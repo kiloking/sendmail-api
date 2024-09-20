@@ -17,8 +17,8 @@ const transporter = nodemailer.createTransport({
     ciphers: "SSLv3",
   },
   auth: {
-    user: process.env.GMAIL_CLIENT_ID,
-    pass: process.env.GMAIL_CLIENT_SECRET,
+    user: process.env.NEXT_PUBLIC_EMAIL_USER,
+    pass: process.env.NEXT_PUBLIC_EMAIL_PASS,
   },
 });
 const transporter2 = nodemailer.createTransport({
